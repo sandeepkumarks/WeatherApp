@@ -1,0 +1,15 @@
+Resources:
+  WeatherInfoTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: WeatherInfo
+      AttributeDefinitions:
+        - AttributeName: location
+          AttributeType: S
+      KeySchema:
+        - AttributeName: location
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
