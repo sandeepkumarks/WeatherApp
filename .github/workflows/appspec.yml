@@ -1,0 +1,32 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: CI/CD Pipeline
+on:
+  push:
+    branches: [ main ]
+jobs:       
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1
+    - name: Checkout to repo
+      uses: actions/checkout@v2
+
+      # Step 2
+    - name: Set AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+      # Step 3
+    - name: Create CodeDeploy Deployment
+      id: deploy
+      run: |
+        aws deploy create-deployment \
+        --application-name aws-nodejs \
+        --deployment-group-name aws-nodejs-g1 \
+        --deployment-config-name CodeDeployDefault.AllAtOnce \
+        --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
