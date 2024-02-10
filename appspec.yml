@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/nodejs-aws
+    destination: /home/ubuntu/aws-nodejs
 hooks:
   AfterInstall:
     - location: scripts/after_install.sh
