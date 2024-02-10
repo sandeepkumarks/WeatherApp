@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-aws",
+  "name": "aws-nodejs",
   "version": "1.0.0",
   "description": "A weather app built in node js and hosted on ec2",
   "main": "app.js",
