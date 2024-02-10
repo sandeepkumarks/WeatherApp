@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /home/ubuntu/nodejs-aws
+cd /home/ubuntu/aws-nodejs
 npm install
