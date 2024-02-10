@@ -4,9 +4,9 @@ const app = express();
 const port = 3000;
 
 app.set('view engine', 'ejs');
-app.set("views", path.join(path.resolve(), "views"));
+app.set('views', path.join(path.resolve(), 'views'));
 
-import weatherRouter from "./routes/weatherRouter.js";
+import weatherRouter from './routes/weatherRouter.js';
 
 app.use('/', weatherRouter);
 

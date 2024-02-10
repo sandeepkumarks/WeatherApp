@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getWeatherInfo } from "../services/weatherService.js";
+import { getWeatherInfo } from '../services/weatherService.js';
 
 router.get('/', async (req, res) => {
   let searchTerm = req.query.q;

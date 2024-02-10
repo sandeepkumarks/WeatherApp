@@ -1,4 +1,4 @@
-import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, GetItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
 import 'dotenv/config';
 
 const client = new DynamoDBClient({ 
@@ -26,9 +26,8 @@ export const getWeatherInfo = async (location) => {
 };
 
 const getWeatherInfoFromDB = async (location) => {
-    console.log('Making DB call');
     const command = new GetItemCommand({
-        TableName: "WeatherInfo",
+        TableName: 'WeatherInfo',
         Key: {
             location: { S: location }
         }
@@ -40,7 +39,7 @@ const getWeatherInfoFromDB = async (location) => {
 
 const addWeatherInfo = async (weatherInfo) => {
     const command = new PutItemCommand({
-        TableName: "WeatherInfo",
+        TableName: 'WeatherInfo',
         Item: {
             location: { S: weatherInfo.location },
             temp: { N: weatherInfo.temp+'' },
@@ -58,7 +57,6 @@ const addWeatherInfo = async (weatherInfo) => {
 };
 
 const getWeatherInfoFromAPI = async (location) => {
-    console.log('Making API call');
     let url = `${weatherAPIURL}&q=${location}`;
     try {
         let response = await fetch(url);
